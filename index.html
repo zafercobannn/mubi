@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- 1: Kedi -->
+    <section class="scene active" data-scene="1">
+      <h2 class="title">bugün sana özel bir şey hazırladım</h2>
+      <p class="hint">kedinin üstüne dokun.</p>
+      <div class="cat-wrap">
+        <img id="cat-gif" src="meme-uiia.gif" alt="kedi" class="cat-gif">
+      </div>
+      <button class="btn hidden" data-next>devam</button>
+    </section>
+
+    <!-- 2: Tolga video -->
+    <section class="scene" data-scene="2">
+      <h2 class="title">arkana yaslan,</h2>
+      <p class="hint italic">bi rahatla bakım.</p>
+      <div class="video-wrap">
+        <video id="tolga-video" controls playsinline preload="metadata"></video>
+      </div>
+      <button class="btn" data-next>devam</button>
+    </section>
+
+    <!-- 3: Hazır mısın -->
+    <section class="scene" data-scene="3">
+      <h2 class="title italic big">hazır mısın?</h2>
+      <button class="btn" data-next>devam</button>
+    </section>
+
+    <!-- 4: Banlieue — paragraf 1, başlıksız -->
+    <section class="scene" data-scene="4">
+      <article class="info-card">
+        <p class="info-body">1759'da Fransa'da Etienne de Silhouette adında aşırı tutumlu bir maliye bakanı vardı. O kadar kısıtlayıcı ekonomi politikaları uyguladı, vergileri o kadar artırdı ki halk onu nefret ve alay konusu yaptı. Dönemin ressamları tam portre çizmek yerine sadece dış hattı çizilen ucuz portreleri "silhouette" olarak adlandırmaya başladı — ucuz, detaysız, cimri, tıpkı o bakan gibi. Adam tarihten silinip gitti ama adı kaldı, hem de tam anlamıyla gölge olarak.</p>
+      </article>
+      <button class="btn" data-next>devam</button>
+    </section>
+
+    <!-- 5: Valla bi sana anlattım -->
+    <section class="scene" data-scene="5">
+      <h2 class="title italic">valla bi sana anlattım.</h2>
+      <button class="btn" data-next>devam</button>
+    </section>
+
+    <!-- 6: Zor bir gündü + umut -->
+    <section class="scene" data-scene="6">
+      <article class="hope-card">
+        <p class="teaser-main">Bugün senin için zor bir gündü.</p>
+        <p class="info-body">
+          unutma, her şey güzel olacak.
+          <br><span class="em">belki hemen değil, ama mutlaka.</span>
+        </p>
+      </article>
+      <button class="btn" data-next>devam</button>
+    </section>
+
+    <!-- 7: Ruh -->
+    <section class="scene dark" data-scene="7">
+      <div class="side-layout reverse">
+        <div class="side-photo">
+          <img src="ruh.webp" alt="">
+        </div>
+        <div class="side-text">
+          <p class="quote-text">Ruhun geçince<br>gölgeler bile güzelleşir.</p>
+          <p class="quote-sub">İçindeki ışık,<br>en sessiz yerlere bile<br>umut bırakır.</p>
+        </div>
+      </div>
+      <button class="btn outline" data-next>devam</button>
+    </section>
+
+    <!-- 8: Umut sensindir -->
+    <section class="scene dark" data-scene="8">
+      <div class="side-layout">
+        <div class="side-text">
+          <p class="whisper big">umut sensindir.</p>
+          <p class="whisper small">sakın unutma.</p>
+        </div>
+        <div class="side-photo">
+          <img src="m%C3%BCbicocukluk.jpg" alt="">
+        </div>
+      </div>
+      <button class="btn outline" data-next>devam</button>
+    </section>
+
+    <!-- 9: Her şey güzel olacak -->
+    <section class="scene" data-scene="9">
+      <h2 class="title italic glow big">her şey güzel olacak.</h2>
+      <div class="photo-pair">
+        <div class="photo-frame">
+          <img src="m%C3%BCbicocukluk.jpg" alt="">
+        </div>
+        <div class="photo-frame">
+          <img src="mb1.png" alt="">
+        </div>
+      </div>
+      <button class="btn" data-next>devam</button>
+    </section>
+
+    <!-- 10: Sibel (final) -->
+    <section class="scene" data-scene="10">
+      <div class="video-wrap">
+        <video id="sibel-video" controls playsinline preload="metadata"></video>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="progress"><span id="progress-bar"></span></div>
+  <script src="script.js"></script>
+</body>
+</html>
