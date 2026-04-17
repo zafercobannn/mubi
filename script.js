@@ -60,13 +60,13 @@ function updateProgress() {
 function onLeave(n) {
   const pause = id => { const v = document.getElementById(id); v && !v.paused && v.pause(); };
   if (n === 2) pause("tolga-video");
-  if (n === 10) pause("sibel-video");
+  if (n === 9) pause("sibel-video");
 }
 
 /* ── enter hooks ── */
 function onEnter(n) {
   const play = id => { const v = document.getElementById(id); if (v) { v.currentTime = 0; v.play().catch(() => {}); }};
-  if (n === 10) play("sibel-video");
+  if (n === 9) play("sibel-video");
 }
 
 updateProgress();
