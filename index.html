@@ -12,8 +12,35 @@
 <body>
   <main id="app">
 
-    <!-- 1: Kedi -->
-    <section class="scene active" data-scene="1">
+    <!-- 1: Sudoku -->
+    <section class="scene active sudoku-scene" data-scene="1">
+      <h2 class="title">önce ufak bir bulmaca</h2>
+      <p class="hint">sudoku'yu çöz — sonunda sana bir sürprizim var.</p>
+      <div class="sudoku-wrap">
+        <div id="sudoku-grid" class="sudoku-grid"></div>
+        <div class="sudoku-pad" id="sudoku-pad">
+          <button class="pad-btn" data-num="1">1</button>
+          <button class="pad-btn" data-num="2">2</button>
+          <button class="pad-btn" data-num="3">3</button>
+          <button class="pad-btn" data-num="4">4</button>
+          <button class="pad-btn" data-num="5">5</button>
+          <button class="pad-btn" data-num="6">6</button>
+          <button class="pad-btn" data-num="7">7</button>
+          <button class="pad-btn" data-num="8">8</button>
+          <button class="pad-btn" data-num="9">9</button>
+          <button class="pad-btn erase" data-num="0">sil</button>
+        </div>
+      </div>
+      <div id="sudoku-reveal" class="sudoku-reveal hidden">
+        <p class="reveal-pre">çözdün.</p>
+        <p class="reveal-title">şimdi altın kareleri sırayla seç ve aşağıdaki şifreye göre doğru harfi yaz. hepsi tamamlanınca bir cümle çıkacak.</p>
+        <div class="cipher-box" id="cipher-box"></div>
+      </div>
+      <button class="btn hidden" data-next>devam</button>
+    </section>
+
+    <!-- 2: Kedi -->
+    <section class="scene" data-scene="2">
       <h2 class="title">bugün sana özel bir şey hazırladım</h2>
       <p class="hint">kedinin üstüne dokun.</p>
       <div class="cat-wrap">
@@ -22,8 +49,8 @@
       <button class="btn hidden" data-next>devam</button>
     </section>
 
-    <!-- 2: Tolga video -->
-    <section class="scene" data-scene="2">
+    <!-- 3: Tolga video -->
+    <section class="scene" data-scene="3">
       <h2 class="title">arkana yaslan,</h2>
       <p class="hint italic">bi rahatla bakım.</p>
       <div class="video-wrap">
@@ -32,28 +59,28 @@
       <button class="btn" data-next>devam</button>
     </section>
 
-    <!-- 3: Hazır mısın -->
-    <section class="scene" data-scene="3">
+    <!-- 4: Hazır mısın -->
+    <section class="scene" data-scene="4">
       <h2 class="title italic big">hazır mısın?</h2>
       <button class="btn" data-next>devam</button>
     </section>
 
-    <!-- 4: Banlieue — paragraf 1, başlıksız -->
-    <section class="scene" data-scene="4">
+    <!-- 5: Banlieue — paragraf 1, başlıksız -->
+    <section class="scene" data-scene="5">
       <article class="info-card">
         <p class="info-body">1759'da Fransa'da Etienne de Silhouette adında aşırı tutumlu bir maliye bakanı vardı. O kadar kısıtlayıcı ekonomi politikaları uyguladı, vergileri o kadar artırdı ki halk onu nefret ve alay konusu yaptı. Dönemin ressamları tam portre çizmek yerine sadece dış hattı çizilen ucuz portreleri "silhouette" olarak adlandırmaya başladı — ucuz, detaysız, cimri, tıpkı o bakan gibi. Adam tarihten silinip gitti ama adı kaldı, hem de tam anlamıyla gölge olarak.</p>
       </article>
       <button class="btn" data-next>devam</button>
     </section>
 
-    <!-- 5: Valla bi sana anlattım -->
-    <section class="scene" data-scene="5">
+    <!-- 6: Valla bi sana anlattım -->
+    <section class="scene" data-scene="6">
       <h2 class="title italic">valla bi sana anlattım.</h2>
       <button class="btn" data-next>devam</button>
     </section>
 
-    <!-- 6: Zor bir gündü + umut -->
-    <section class="scene" data-scene="6">
+    <!-- 7: Zor bir gündü + umut -->
+    <section class="scene" data-scene="7">
       <article class="hope-card">
         <p class="teaser-main">Bugün senin için zor bir gündü.</p>
         <p class="info-body">
@@ -64,8 +91,8 @@
       <button class="btn" data-next>devam</button>
     </section>
 
-    <!-- 7: Ruh -->
-    <section class="scene dark" data-scene="7">
+    <!-- 8: Ruh -->
+    <section class="scene dark" data-scene="8">
       <div class="side-layout reverse">
         <div class="side-photo">
           <img src="ruh.webp" alt="">
@@ -78,8 +105,8 @@
       <button class="btn outline" data-next>devam</button>
     </section>
 
-    <!-- 8: Her şey güzel olacak (dark) -->
-    <section class="scene dark" data-scene="8">
+    <!-- 9: Her şey güzel olacak (dark) -->
+    <section class="scene dark" data-scene="9">
       <h2 class="title italic glow big">her şey güzel olacak.</h2>
       <div class="photo-pair">
         <div class="photo-frame">
@@ -92,8 +119,8 @@
       <button class="btn outline" data-next>devam</button>
     </section>
 
-    <!-- 9: Sibel (final) -->
-    <section class="scene" data-scene="9">
+    <!-- 10: Sibel (final) -->
+    <section class="scene" data-scene="10">
       <h2 class="title">e o zaman bi çikolata isterim. "Bi tane ama..."</h2>
       <div class="video-wrap">
         <video id="sibel-video" controls playsinline preload="metadata"></video>

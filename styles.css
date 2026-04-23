@@ -383,6 +383,195 @@ body {
   text-align: left;
 }
 
+/* ─── sudoku ─────────────────────────────────────── */
+.sudoku-scene {
+  justify-content: flex-start;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+.sudoku-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+}
+
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: min(420px, 88vw);
+  aspect-ratio: 1;
+  background: #fffbf0;
+  border: 2.5px solid #1f130a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(44,26,10,0.2);
+}
+
+.sud-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  color: #b33c2a;
+  font-weight: 500;
+  background: #fffbf0;
+  border: 1px solid rgba(44,26,10,0.14);
+  cursor: pointer;
+  transition: background 180ms var(--ease), color 180ms var(--ease);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+.sud-cell.given {
+  color: #14100b;
+  font-weight: 700;
+  background: #ece0c6;
+  cursor: default;
+}
+.sud-cell.peer { background: #f7efd8; }
+.sud-cell.given.peer { background: #e3d6b8; }
+.sud-cell.same-num { background: #f2d4c6; }
+.sud-cell.given.same-num { background: #e4cfae; }
+.sud-cell.selected {
+  background: #f0b9a7;
+  box-shadow: inset 0 0 0 2.5px #b33c2a;
+  z-index: 1;
+}
+.sud-cell.error { color: #9b1e1e; }
+
+.sud-cell[data-col="2"], .sud-cell[data-col="5"] { border-right: 2px solid #1f130a; }
+.sud-cell[data-row="2"], .sud-cell[data-row="5"] { border-bottom: 2px solid #1f130a; }
+
+.sud-cell.msg {
+  background: #f4c43a !important;
+  color: #2a1906 !important;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 2.5px #9c6d12;
+  z-index: 2;
+}
+.sud-cell.msg.selected {
+  background: #f0a823 !important;
+  box-shadow: inset 0 0 0 3px #6b3f1e !important;
+}
+.sud-cell.msg.msg-filled {
+  background: #7a4f1a !important;
+  color: var(--cream) !important;
+  font-family: var(--serif);
+  letter-spacing: 0.02em;
+}
+.sud-cell.msg.msg-wrong {
+  animation: sudShake 380ms;
+  background: #c6342d !important;
+  color: #fff !important;
+}
+@keyframes sudShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+}
+.sud-cell.msg::before {
+  content: attr(data-msg-order);
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-size: 0.58rem;
+  color: #2a1906;
+  opacity: 0.8;
+  font-family: var(--sans);
+  font-weight: 700;
+  line-height: 1;
+}
+.sud-cell.msg.msg-filled::before {
+  color: var(--cream);
+  opacity: 0.55;
+}
+
+.sudoku-pad {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 5px;
+  width: min(420px, 88vw);
+}
+.pad-btn {
+  padding: 10px 0;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--brown);
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(176,122,48,0.28);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms var(--ease);
+}
+.pad-btn:hover { background: var(--rose2); color: var(--cream); }
+.pad-btn.erase { font-size: 0.85rem; font-style: italic; }
+
+.sudoku-reveal {
+  max-width: 520px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.88);
+  border: 1px solid rgba(176,122,48,0.25);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 48px rgba(44,26,10,0.14);
+  animation: revealFade 800ms var(--ease);
+}
+@keyframes revealFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.sudoku-reveal.hidden { display: none; }
+
+.reveal-pre {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--rose);
+  margin-bottom: 8px;
+}
+.reveal-title {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: var(--brown);
+  margin-bottom: 14px;
+}
+.cipher-box {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+}
+.cipher-box .chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 2px;
+  background: rgba(176,122,48,0.12);
+  border-radius: 6px;
+  font-family: var(--serif);
+}
+.cipher-box .chip b {
+  font-size: 1rem;
+  color: var(--brown);
+  font-weight: 600;
+}
+.cipher-box .chip i {
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--rose);
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
 /* ─── bad bunny ──────────────────────────────────── */
 .bb-gif {
   width: min(310px, 65vw);
